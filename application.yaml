@@ -1,0 +1,19 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/skillbox?stringtype=unspecified
+    username: skillbox
+    password: password
+  jpa:
+    show-sql: true
+    hibernate.ddl-auto: validate
+  liquibase:
+    change-log: classpath:/db/changelog/liquibase-change.yaml
+    enabled: true
+
+info:
+  title: DevPub
+  subTitle: Рассказы разработчиков
+  phone: +7 929 264-42-88
+  email: fabritsiusda@gmail.com
+  copyright: Дмитрий Фабрициус
+  from: 2020
