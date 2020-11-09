@@ -1,6 +1,6 @@
 package main.controllers;
 
-import main.api.responses.PostsResponse;
+import main.api.responses.PostResponse;
 import main.services.PostService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,7 +16,7 @@ public class ApiPostController {
     }
 
     @GetMapping("/post")
-    private ResponseEntity<PostsResponse> getPosts(
+    private ResponseEntity<PostResponse> getPosts(
             @RequestParam int offset,
             @RequestParam int limit,
             @RequestParam String mode){

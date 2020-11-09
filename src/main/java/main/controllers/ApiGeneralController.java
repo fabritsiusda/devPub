@@ -2,7 +2,7 @@ package main.controllers;
 
 import main.api.responses.BlogInfo;
 import main.api.responses.SettingResponse;
-import main.api.responses.TagsResponse;
+import main.api.responses.TagResponse;
 import main.services.ApiService;
 import main.services.SettingsService;
 import main.services.TagService;
@@ -37,7 +37,7 @@ public class ApiGeneralController {
     }
 
     @GetMapping("/tag")
-    public ResponseEntity<TagsResponse> getTags(@PathVariable(required = false, name = "query") String query){
+    public ResponseEntity<TagResponse> getTags(@PathVariable(required = false, name = "query") String query){
         return tagService.getTagByQuery(query);
     }
 

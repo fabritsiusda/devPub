@@ -1,7 +1,6 @@
 package main.services;
 
 import main.api.responses.TagResponse;
-import main.api.responses.TagsResponse;
 import main.mappers.TagMapper;
 import main.models.Tag;
 import main.repositories.PostRepository;
@@ -24,12 +23,11 @@ public class TagService {
     }
 
     //TODO переделать на запрос??
-    public ResponseEntity<TagsResponse> getTagByQuery(String query) {
+    public ResponseEntity<TagResponse> getTagByQuery(String query) {
         List<Tag> tags = query!= null ?  tagRepository.findByNameContains(query)
                 : tagRepository.findAll();
         long postCount = postRepository.count();
-        List<TagResponse> tResponses = TagMapper.tagListToTagResponseList(tags, postCount);
-        TagsResponse response = new TagsResponse(tResponses);
+        TagResponse response = TagMapper.mapToResponse(tags, postCount);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 

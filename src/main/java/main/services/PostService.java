@@ -1,7 +1,6 @@
 package main.services;
 
 import main.api.responses.PostResponse;
-import main.api.responses.PostsResponse;
 import main.mappers.PostMapper;
 import main.models.ModerationStatus;
 import main.models.Post;
@@ -14,7 +13,6 @@ import org.springframework.stereotype.Service;
 import java.util.Calendar;
 import java.util.List;
 import java.util.function.Function;
-import java.util.stream.Collectors;
 
 @Service
 public class PostService {
@@ -31,12 +29,12 @@ public class PostService {
     }
 
 
-    public ResponseEntity<PostsResponse> getPosts(int offset, int limit, String mode) {
+    public ResponseEntity<PostResponse> getPosts(int offset, int limit, String mode) {
         List<Post> posts = postRepository.findAllByModerationStatusAndIsActiveInAndTimeBefore(
                 ModerationStatus.ACCEPTED, List.of(true), Calendar.getInstance().getTime(), getPageRequest(offset, limit, mode)
         );
-        List<PostResponse> postResponses = posts.stream().map(PostMapper::postToPostResponse).collect(Collectors.toList());
-        PostsResponse response = new PostsResponse(postRepository.count(), postResponses);
+        long count = postRepository.count();
+        PostResponse response = PostMapper.mapToResponse(posts, count);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
