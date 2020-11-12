@@ -27,6 +27,10 @@ public class PostResponse {
         private int dislikeCount;
         private int commentCount;
         private int viewCount;
+        private boolean active;
+        private String text;
+        private List<CommentResponse> comments;
+        private List<String> tags;
 
     }
 

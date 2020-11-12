@@ -1,6 +1,7 @@
 package main.controllers;
 
 import main.api.responses.BlogInfo;
+import main.api.responses.CalendarResponse;
 import main.api.responses.SettingResponse;
 import main.api.responses.TagResponse;
 import main.services.ApiService;
@@ -39,6 +40,11 @@ public class ApiGeneralController {
     @GetMapping("/tag")
     public ResponseEntity<TagResponse> getTags(@PathVariable(required = false, name = "query") String query){
         return tagService.getTagByQuery(query);
+    }
+
+    @GetMapping("/calendar")
+    public ResponseEntity<CalendarResponse> calendar(@PathVariable(required = false) Integer year){
+        return apiService.getCalendar(year);
     }
 
 }
