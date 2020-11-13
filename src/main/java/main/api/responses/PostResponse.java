@@ -4,7 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Date;
 import java.util.List;
 
 @Data
@@ -19,7 +18,7 @@ public class PostResponse {
     public static class Post{
 
         private int id;
-        private Date timestamp;
+        private Long timestamp;
         private User user;
         private String title;
         private String announce;
