@@ -19,7 +19,7 @@ public class PostMapper {
         response.setCommentCount(post.getComments().size());
         response.setLikeCount(likes);
         response.setDislikeCount(post.getVotes().size() - likes);
-        response.setTimestamp(post.getTime());
+        response.setTimestamp(post.getTime().getTime() / 1000);
         response.setTitle(post.getTitle());
         response.setViewCount(post.getViewCount());
         response.setAnnounce(post.getText().replaceAll("\\<.*?\\>", "").substring(0, 60));

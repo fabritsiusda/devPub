@@ -19,7 +19,7 @@ public class PostResponse {
     public static class Post{
 
         private int id;
-        private Date timestamp;
+        private long timestamp;
         private User user;
         private String title;
         private String announce;
